@@ -9,7 +9,6 @@ for i in s:
     b.append(cnt)
 
 answer = b[0]
-print(len(b))
 for i in range(1, len(b)):
     answer -= b[i]
 
