@@ -1,13 +1,24 @@
 
-oid search(Node root) {
-    if (root == null) return
-    # 1. root 노드 방문
-    visit(root)
-    root.visited = true  # 1-1. 방문한 노드를 표시
-    # 2. root 노드와 인접한 정점을 모두 방문
-    for each(Node n in root.adjacent) {
-        if (n.visited == false) {  # 4. 방문하지 않은 정점을 찾는다.
-            search(n)  # 3. root 노드와 인접한 정점 정점을 시작 정점으로 DFS를 시작
-        }
-    }
-}
+def dfs(graph, v, visited):
+    # 현재 노드 방문처리
+    visited[v] = True
+    print(v, end=",")
+    # 현재 노드와 연결된 다른 노그를 재귀적으로 방문
+    for i in graph[v]:
+        if not visited[i]:
+            dfs(graph, i, visited)
+
+
+graph = [
+    [1, 2],
+    [0, 3, 4, 5],
+    [0, 6],
+    [1],
+    [1],
+    [1],
+    [2]
+]
+
+visited = [False]*9
+
+dfs(graph, 0, visited)
