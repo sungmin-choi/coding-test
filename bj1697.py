@@ -1,24 +1,28 @@
 from collections import deque
-n, k = map(int, input().split())
-answer = 0
-visited = []
 
 
-def bfs(n, k, answer, visited):
-    queue = deque([n])
+def bfs(n):
+    count = 0
+    queue = deque([[n, count]])
     while queue:
-        n = queue.popleft()
-        if n in visited:
-            continue
-        else:
-            visited.append(n)
-            queue.append(n+1)
-            queue.append(n-1)
-            queue.append(n*2)
-        answer += 1
-        if k in queue:
-            break
-    print(answer)
+        s = queue.popleft()
+        v = s[0]
+        count = s[1]
+
+        if not visited[v]:
+            visited[v] = True
+            if v == k:
+                return count
+            count += 1
+            if v*2 <= 100000:
+                queue.append([v*2, count])
+            if v+1 <= 100000:
+                queue.append([v+1, count])
+            if v-1 >= 0:
+                queue.append([v-1, count])
+    return count
 
 
-bfs(n, k, answer, visited)
+n, k = map(int, input().split())
+visited = [False]*100001
+print(bfs(n))
