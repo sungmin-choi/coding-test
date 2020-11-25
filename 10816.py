@@ -35,3 +35,5 @@ array2 = list(map(int, sys.stdin.readline().split()))
 
 for i in array2:
     binary_search(array1, i, 0, len(array1)-1, 0)
+
+print(array2)
