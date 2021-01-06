@@ -1,2 +1,2 @@
-array2 = [[0] for _ in range(5)]
-print(array2)
+array = [0] * 5
+print(bin(9 | 30)[2:])
